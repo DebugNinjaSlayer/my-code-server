@@ -37,6 +37,7 @@ extensions=(
     "mtxr.sqltools"
     "mtxr.sqltools-driver-pg"
     "heybourn.headwind"
+    "ms-python.python"
 )
 for ext in "${extensions[@]}"
 do
