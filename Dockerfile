@@ -1,7 +1,7 @@
 # https://github.com/coder/code-server/releases/latest
 FROM codercom/code-server:4.92.2
 
-LABEL MAINTAINER="skycc71640@gmail.com"
+LABEL MAINTAINER="oddcc@gmail.com"
 
 EXPOSE 8080
 
@@ -14,7 +14,6 @@ USER root
 # 安装常用工具并设置时区
 RUN <<EOF
 apt-get update && apt-get install -y \
-    libssl-dev \
     build-essential \
     vim \
     dnsutils \
@@ -22,6 +21,8 @@ apt-get update && apt-get install -y \
     python3-full \
     python3-pip \
     pipx
+
+apt-get install -y install zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev libreadline-dev lzma liblzma-dev
 rm -rf /var/lib/apt/lists/*
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
 EOF
