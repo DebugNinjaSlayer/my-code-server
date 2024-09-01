@@ -1,0 +1,34 @@
+services:
+  code-server:
+    image: oddcc/my-code-server:latest
+    container_name: code-server
+    hostname: code-server
+    volumes:
+      - $PWD/.config:/home/coder/.config
+      - $PWD/.local/share:/home/coder/.local/share
+      - $PWD/project:/home/coder/project
+      - $HOME/.ssh:/home/coder/.ssh:ro
+      - docker-certs-client:/certs/client
+    user: "${UID}:${GID}" # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
+    ports:
+      - 8443:8080
+    restart: unless-stopped
+    network_mode: cftunnel
+  docker:
+    image: docker:dind
+    container_name: docker
+    hostname: docker
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - docker-certs-ca:/certs/ca
+      - docker-certs-client:/certs/client
+      - docker-data:/var/lib/docker
+    privileged: true
+    restart: unless-stopped
+    network_mode: cftunnel
+
+volumes:
+  docker-certs-ca:
+  docker-certs-client:
+  docker-data:
