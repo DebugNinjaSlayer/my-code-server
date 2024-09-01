@@ -9,7 +9,10 @@ services:
       - $PWD/project:/home/coder/project
       - $HOME/.ssh:/home/coder/.ssh:ro
       - docker-certs-client:/certs/client
-    user: "${UID}:${GID}" # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
+    environment:
+      - UID=${UID}
+      - GID=${GID}
+    user: ${UID}:${GID} # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
     ports:
       - 8443:8080
     restart: unless-stopped

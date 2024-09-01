@@ -2,6 +2,11 @@
 
 echo "Appliying environment variables, install extensions"
 
+# 修复权限问题，不这样修复的话，在服务器上创建出来是所属root用户的，后续无法正常启动。原因未知
+echo "Ensure folders and permissions"
+sudo mkdir -p /home/coder/.config /home/coder/.local /home/coder/project
+sudo chown -R coder:coder /home/coder/.config /home/coder/.local /home/coder/project
+
 cat >> ${HOME}/.bashrc <<'EOF'
 
 # custom
