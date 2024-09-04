@@ -12,6 +12,7 @@ ENV HOST="code-server"
 USER root
 
 # 安装常用工具并设置时区
+# https://doc.scrapy.org/en/latest/intro/install.html#ubuntu-14-04-or-above
 RUN <<EOF
 apt-get update && apt-get install -y \
     build-essential \
@@ -19,10 +20,10 @@ apt-get update && apt-get install -y \
     dnsutils \
     net-tools \
     python3-full \
-    python3-pip \
     pipx
 
-apt-get install -y install zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev libreadline-dev lzma liblzma-dev
+apt-get install -y zlib1g libbz2-dev libsqlite3-dev libreadline-dev lzma liblzma-dev
+apt-get install -y python3 python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev
 rm -rf /var/lib/apt/lists/*
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
 EOF
