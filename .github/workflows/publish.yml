@@ -45,8 +45,6 @@ jobs:
             cd ~/container/my-code-server
             git fetch origin main
             git reset --hard origin/main
-            chmod +x prepare.sh
-            ./prepare.sh
             docker-compose pull
             docker-compose down
             docker-compose up -d

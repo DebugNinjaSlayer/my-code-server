@@ -23,7 +23,7 @@ nvm use --lts
 # install pnpm
 export SHELL=bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-cat <<'EOF' >>/root/.bashrc
+cat <<'EOF' >> $HOME/.bashrc
 # pnpm
 export PNPM_HOME="/config/.local/share/pnpm"
 case ":$PATH:" in
@@ -58,7 +58,3 @@ curl -s https://get.sdkman.io | bash
 . "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 21.0.2-open
 sdk default java 21.0.2-open
-
-echo "ensure config files"
-if [ ! -f $HOME/.gitconfig ]; then touch $HOME/.gitconfig; fi
-if [ ! -f $HOME/.wakatime.cfg ]; then touch $HOME/.wakatime.cfg; fi
