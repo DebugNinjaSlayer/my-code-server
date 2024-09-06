@@ -7,8 +7,9 @@ echo "Ensure folders and permissions"
 sudo mkdir -p /home/coder/.config /home/coder/.local/share /home/coder/project
 sudo chown -R coder:coder /home/coder
 
-# ensure .gitconfig
-RUN if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi
+echo "Ensure config files"
+RUN if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi && \
+RUN if [ ! -f /home/coder/.wakatime.cfg ]; then touch /home/coder/.wakatime.cfg; fi
 
 cat >> ${HOME}/.bashrc <<'EOF'
 
