@@ -3,7 +3,6 @@
 echo "Install extensions"
 
 cp -a /tmp/homebak/. /home/coder
-sudo rm -rf /tmp/homebak
 
 for i in /tmp/extensions/*; do code-server --force --install-extension "$i"; done
 extensions=(
