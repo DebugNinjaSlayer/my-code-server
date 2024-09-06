@@ -11,7 +11,6 @@ ENV HOST="code-server"
 
 USER root
 
-# 安装常用工具并设置时区
 # https://doc.scrapy.org/en/latest/intro/install.html#ubuntu-14-04-or-above
 RUN <<EOF
 apt-get update && apt-get install -y \
@@ -38,17 +37,16 @@ EOF
 # 修改用户默认 shell
 # RUN usermod -s /bin/zsh coder
 
-# 安装依赖工具
 COPY ./custom/install-tools-root.sh /opt/scripts/
 RUN bash /opt/scripts/install-tools-root.sh 
 
-# 添加start脚本
 COPY ./custom/start.sh /opt/
 RUN chmod +x /opt/start.sh && sed -i '/^exec/i /opt/start.sh' /usr/bin/entrypoint.sh
 
 USER coder
 
-# 安装依赖工具和插件
 COPY ./custom/install-tools.sh /opt/scripts/
 COPY ./custom/extensions /tmp/extensions
-RUN bash /opt/scripts/install-tools.sh
+RUN bash /opt/scripts/install-tools.sh && \
+    if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi && \
+    if [ ! -f /home/coder/.wakatime.cfg ]; then touch /home/coder/.wakatime.cfg; fi
