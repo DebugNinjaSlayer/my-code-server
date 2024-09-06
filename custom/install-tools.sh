@@ -22,15 +22,6 @@ nvm use --lts
 # install pnpm
 export SHELL=bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
-cat <<'EOF' >> $HOME/.bashrc
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-EOF
 
 # install yarn
 npm install --global yarn
@@ -52,8 +43,23 @@ echo 'PATH="$M2_HOME/bin:$PATH"' >> $HOME/.bashrc
 echo 'export PATH' >> $HOME/.bashrc
 rm apache-maven-$MAVEN_VERSION-bin.tar.gz
 
-# install java, 
+# install jdk
 curl -s https://get.sdkman.io | bash
 . "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 21.0.2-open
 sdk default java 21.0.2-open
+
+cat << 'EOF' >> $HOME/.bashrc
+
+# custom
+PATH="$HOME/.local/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export DOCKER_HOST=tcp://${DOCKER_DIND_HOST:-docker}:2376
+export DOCKER_CERT_PATH=${DOCKER_DIND_CERT_PATH:-"/certs/client"}
+export DOCKER_TLS_VERIFY=1
+EOF
+
+cp -a /home/coder /tmp/homebak

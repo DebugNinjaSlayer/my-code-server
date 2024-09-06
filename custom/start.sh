@@ -1,19 +1,9 @@
 #!/usr/bin/env bash
 
-echo "Appliying environment variables, install extensions"
+echo "Install extensions"
 
-cat >> ${HOME}/.bashrc <<'EOF'
-
-# custom
-PATH="$HOME/.local/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export DOCKER_HOST=tcp://${DOCKER_DIND_HOST:-docker}:2376
-export DOCKER_CERT_PATH=${DOCKER_DIND_CERT_PATH:-"/certs/client"}
-export DOCKER_TLS_VERIFY=1
-EOF
+cp -a /tmp/homebak/. /home/coder
+sudo rm -rf /tmp/homebak
 
 for i in /tmp/extensions/*; do code-server --force --install-extension "$i"; done
 extensions=(
