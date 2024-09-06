@@ -5,6 +5,7 @@ echo "Installing tools for common user"
 pipx install pipenv
 pipx ensurepath
 pipx completions
+mkdir /home/coder/.pyenv
 curl https://pyenv.run | bash
 
 # install nvm and nodejs
