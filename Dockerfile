@@ -47,6 +47,4 @@ USER coder
 
 COPY ./custom/install-tools.sh /opt/scripts/
 COPY ./custom/extensions /tmp/extensions
-RUN bash /opt/scripts/install-tools.sh && \
-    if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi && \
-    if [ ! -f /home/coder/.wakatime.cfg ]; then touch /home/coder/.wakatime.cfg; fi
+RUN bash /opt/scripts/install-tools.sh

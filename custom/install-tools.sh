@@ -58,3 +58,7 @@ curl -s https://get.sdkman.io | bash
 . "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 21.0.2-open
 sdk default java 21.0.2-open
+
+echo "ensure config files"
+if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi
+if [ ! -f /home/coder/.wakatime.cfg ]; then touch /home/coder/.wakatime.cfg; fi
