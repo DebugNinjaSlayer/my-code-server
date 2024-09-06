@@ -2,6 +2,7 @@
 
 echo "Install extensions"
 
+sudo chown -R coder:coder /home/coder
 cp -a /tmp/homebak/. /home/coder
 
 for i in /tmp/extensions/*; do code-server --force --install-extension "$i"; done
