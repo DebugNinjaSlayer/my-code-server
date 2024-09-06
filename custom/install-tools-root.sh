@@ -2,6 +2,7 @@
 # beased on debian https://github.com/coder/code-server/blob/e05d88007f0d8a8a14a371d070c5dd3b29582137/ci/release-image/Dockerfile#L3
 echo "Installing tools for root"
 
+# install docker
 apt-get install -y ca-certificates curl
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
@@ -12,3 +13,18 @@ echo \
     sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# install ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |
+    gpg --dearmor -o /etc/apt/keyrings/ngrok.gpg &&
+    echo "deb [signed-by=/etc/apt/keyrings/ngrok.gpg] https://ngrok-agent.s3.amazonaws.com buster main" |
+    tee /etc/apt/sources.list.d/ngrok.list &&
+    apt update
+apt install ngrok
+ngrok config add-authtoken 2inu6OHnOstKqOFU2VudAymO1cV_3ssZ11mXX7fa3NG5oufbr
+
+# install java
+apt-get install -y \
+	openjdk-8-jdk-headless \
+	openjdk-11-jdk-headless \
+	openjdk-17-jdk-headless
