@@ -43,11 +43,11 @@ jobs:
           service_token_secret: ${{ secrets.SERVICE_TOKEN_SECRET }}
           commands: |
             cd ~/container/my-code-server
+            git fetch origin main
+            git reset --hard origin/main
             chmod +x prepare.sh
             ./prepare.sh
             docker-compose pull
-            git fetch origin main
-            git reset --hard origin/main
             docker-compose down
             docker-compose up -d
 
