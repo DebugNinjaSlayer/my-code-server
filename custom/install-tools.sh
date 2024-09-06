@@ -52,3 +52,8 @@ echo "M2_HOME='/opt/apache-maven-$MAVEN_VERSION'" >> /root/.bashrc
 echo 'PATH="$M2_HOME/bin:$PATH"' >> /root/.bashrc
 echo 'export PATH' >> /root/.bashrc
 rm apache-maven-$MAVEN_VERSION-bin.tar.gz
+
+# install java, 
+curl -s https://get.sdkman.io | bash
+sdk install java 21.0.2-open
+sdk use java 21.0.2-open

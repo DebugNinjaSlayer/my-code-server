@@ -22,9 +22,3 @@ curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |
     apt update
 apt install ngrok
 ngrok config add-authtoken 2inu6OHnOstKqOFU2VudAymO1cV_3ssZ11mXX7fa3NG5oufbr
-
-# install java
-apt-get install -y \
-	openjdk-8-jdk-headless \
-	openjdk-11-jdk-headless \
-	openjdk-17-jdk-headless

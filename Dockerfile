@@ -16,6 +16,7 @@ USER root
 RUN <<EOF
 apt-get update && apt-get install -y \
     build-essential \
+    unzip \
     vim \
     dnsutils \
     net-tools \
