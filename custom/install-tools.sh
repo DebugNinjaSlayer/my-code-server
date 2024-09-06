@@ -57,4 +57,4 @@ rm apache-maven-$MAVEN_VERSION-bin.tar.gz
 curl -s https://get.sdkman.io | bash
 . "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 21.0.2-open
-sdk use java 21.0.2-open
+sdk default java 21.0.2-open
