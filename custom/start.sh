@@ -7,6 +7,9 @@ echo "Ensure folders and permissions"
 sudo mkdir -p /home/coder/.config /home/coder/.local/share /home/coder/project
 sudo chown -R coder:coder /home/coder
 
+# ensure .gitconfig
+RUN if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi
+
 cat >> ${HOME}/.bashrc <<'EOF'
 
 # custom

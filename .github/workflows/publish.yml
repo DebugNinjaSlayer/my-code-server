@@ -46,8 +46,8 @@ jobs:
             docker-compose pull
             git fetch origin main
             git reset --hard origin/main
-            export GID=$(id -g) && docker-compose down
-            export GID=$(id -g) && docker-compose up -d
+            docker-compose down
+            docker-compose up -d
 
             while :; do
               LOG_OUTPUT=$(docker logs --tail=50 code-server)
