@@ -7,8 +7,8 @@ services:
       - $PWD/coderhome/.config:/home/coder/.config
       - $PWD/coderhome/.pyenv:/home/coder/.pyenv
       - $PWD/coderhome/.local/share:/home/coder/.local/share
-      - $PWD/coderhome/gitconfig:/home/coder/.gitconfig
-      - $PWD/coderhome/.wakatime.cfg:/home/coder/.wakatime.cfg
+      # - $PWD/coderhome/gitconfig:/home/coder/.gitconfig
+      # - $PWD/coderhome/.wakatime.cfg:/home/coder/.wakatime.cfg
       - $PWD/project:/home/coder/project
       - $HOME/.ssh:/home/coder/.ssh:ro
       - docker-certs-client:/certs/client
