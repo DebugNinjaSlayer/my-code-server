@@ -9,7 +9,6 @@ curl https://pyenv.run | bash
 
 # install nvm and nodejs
 NVM_VERSION=v0.39.7
-rm -rf /config/.nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
 echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.bashrc
 echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> $HOME/.bashrc
@@ -25,7 +24,7 @@ export SHELL=bash
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 cat <<'EOF' >> $HOME/.bashrc
 # pnpm
-export PNPM_HOME="/config/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
