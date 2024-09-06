@@ -4,12 +4,12 @@ services:
     container_name: code-server
     hostname: code-server
     volumes:
+      - $PWD/project:/home/coder/project
       - $PWD/coderhome/.config:/home/coder/.config
       - $PWD/coderhome/.pyenv:/home/coder/.pyenv
       - $PWD/coderhome/.local/share:/home/coder/.local/share
-      # - $PWD/coderhome/gitconfig:/home/coder/.gitconfig
-      # - $PWD/coderhome/.wakatime.cfg:/home/coder/.wakatime.cfg
-      - $PWD/project:/home/coder/project
+      - $PWD/coderhome/gitconfig:/home/coder/.gitconfig
+      - $PWD/coderhome/.wakatime.cfg:/home/coder/.wakatime.cfg
       - $HOME/.ssh:/home/coder/.ssh:ro
       - docker-certs-client:/certs/client
     user: 1002:1002 # export UID=$(id -u) && export GID=$(id -g) && docker-compose up

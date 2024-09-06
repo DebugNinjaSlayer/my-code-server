@@ -5,7 +5,6 @@ echo "Installing tools for common user"
 pipx install pipenv
 pipx ensurepath
 pipx completions
-mkdir /home/coder/.pyenv
 curl https://pyenv.run | bash
 
 # install nvm and nodejs
@@ -61,5 +60,5 @@ sdk install java 21.0.2-open
 sdk default java 21.0.2-open
 
 echo "ensure config files"
-if [ ! -f /home/coder/.gitconfig ]; then touch /home/coder/.gitconfig; fi
-if [ ! -f /home/coder/.wakatime.cfg ]; then touch /home/coder/.wakatime.cfg; fi
+if [ ! -f $HOME/.gitconfig ]; then touch $HOME/.gitconfig; fi
+if [ ! -f $HOME/.wakatime.cfg ]; then touch $HOME/.wakatime.cfg; fi
