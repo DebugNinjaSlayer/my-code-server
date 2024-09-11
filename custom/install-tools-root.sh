@@ -20,4 +20,6 @@ curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |
     echo "deb [signed-by=/etc/apt/keyrings/ngrok.gpg] https://ngrok-agent.s3.amazonaws.com buster main" |
     tee /etc/apt/sources.list.d/ngrok.list &&
     apt update
-apt install ngrok
+apt-get install -y ngrok
+
+apt-get install -y tor
