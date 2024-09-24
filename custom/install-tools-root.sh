@@ -22,4 +22,4 @@ curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc |
     apt update
 apt-get install -y ngrok
 
-apt-get install -y tor
+apt-get install -y tor iputils-ping
