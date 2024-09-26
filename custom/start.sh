@@ -24,6 +24,7 @@ extensions=(
     "heybourn.headwind"
     "ms-python.python"
     "ms-python.autopep8"
+    "eamodio.gitlens"
 )
 for ext in "${extensions[@]}"
 do
