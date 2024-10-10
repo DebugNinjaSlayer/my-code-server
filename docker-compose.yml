@@ -7,25 +7,29 @@ services:
       - $PWD/coderhome:/home/coder
       - $PWD/project:/home/coder/project
       - $HOME/.ssh:/home/coder/.ssh:ro
-      - docker-certs-client:/certs/client
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - docker-certs-client:/certs/client
+    environment:
+      - DOCKER_TLS_VERIFY=0
+      - DOCKER_HOST=unix:///var/run/docker.sock
     user: 1002:1002 # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
     ports:
       - 8080:8080
     restart: unless-stopped
-  docker:
-    image: docker:dind
-    container_name: docker
-    hostname: docker
-    environment:
-      - DOCKER_TLS_CERTDIR=/certs
-    volumes:
-      - docker-certs-ca:/certs/ca
-      - docker-certs-client:/certs/client
-      - docker-data:/var/lib/docker
-    privileged: true
-    restart: unless-stopped
+#   docker:
+#     image: docker:dind
+#     container_name: docker
+#     hostname: docker
+#     environment:
+#       - DOCKER_TLS_CERTDIR=/certs
+#     volumes:
+#       - docker-certs-ca:/certs/ca
+#       - docker-certs-client:/certs/client
+#       - docker-data:/var/lib/docker
+#     privileged: true
+#     restart: unless-stopped
 
-volumes:
-  docker-certs-ca:
-  docker-certs-client:
-  docker-data:
+# volumes:
+#   docker-certs-ca:
+#   docker-certs-client:
+#   docker-data:
