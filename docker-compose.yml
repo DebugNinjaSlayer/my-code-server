@@ -17,8 +17,6 @@ services:
     image: docker:dind
     container_name: docker
     hostname: docker
-    ports:
-      - 3000:3000
     environment:
       - DOCKER_TLS_CERTDIR=/certs
     volumes:
