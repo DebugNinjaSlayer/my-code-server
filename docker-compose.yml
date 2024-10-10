@@ -12,6 +12,7 @@ services:
     ports:
       - 8080:8080
     restart: unless-stopped
+    network_mode: cftunnel
   docker:
     image: docker:dind
     container_name: docker
@@ -26,7 +27,7 @@ services:
       - docker-data:/var/lib/docker
     privileged: true
     restart: unless-stopped
-
+    network_mode: cftunnel
 volumes:
   docker-certs-ca:
   docker-certs-client:
