@@ -1,5 +1,5 @@
 # https://github.com/coder/code-server/releases/latest
-FROM codercom/code-server:4.92.2
+FROM codercom/code-server:4.93.1
 
 LABEL MAINTAINER="oddcc@gmail.com"
 
