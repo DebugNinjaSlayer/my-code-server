@@ -27,7 +27,7 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 npm install --global yarn
 
 # install golang
-GOLANG_VERSION=1.22.3
+GOLANG_VERSION=1.23.2
 curl -OL https://go.dev/dl/go$GOLANG_VERSION.linux-arm64.tar.gz
 sudo tar -C /usr/local -xf go$GOLANG_VERSION.linux-arm64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >>  $HOME/.bashrc
