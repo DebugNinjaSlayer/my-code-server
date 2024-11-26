@@ -36,3 +36,17 @@ apt-get install -y openssh-server
 sed -i 's/^#*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+
+cat <<EOF >> /etc/ssh/sshd_config
+Match user johndoe
+  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
+  AuthorizedPrincipalsCommandUser nobody
+EOF
+
+cat <<EOF >> /etc/ssh/ca.pub
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGiLhNjaDRnZvyQmBOZBwuPxz0vs/SP53L+oKZAha2F15ieBk4ynDrUAZRZdNwh/5+tzkdWnSnCUEtdmIZoC/OI= open-ssh-ca@cloudflareaccess.org
+EOF
+
+mkdir -p /run/sshd
+chmod 755 /run/sshd
+sed -i '/^exec/i /usr/sbin/sshd' /usr/bin/entrypoint.sh

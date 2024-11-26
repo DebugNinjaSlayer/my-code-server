@@ -10,8 +10,8 @@ services:
       - docker-certs-client:/certs/client
     user: 1002:1002 # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
     ports:
-      - 8080:8080
-      - 12222:22
+      - "8080:8080"
+      - "12222:22"
     restart: unless-stopped
     network_mode: cftunnel
   docker:
