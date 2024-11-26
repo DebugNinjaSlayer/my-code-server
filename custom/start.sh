@@ -30,3 +30,6 @@ for ext in "${extensions[@]}"
 do
     code-server --force --install-extension "$ext"
 done
+
+sudo ssh-keygen -A
+sudo /usr/sbin/sshd

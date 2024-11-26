@@ -49,4 +49,3 @@ EOF
 
 mkdir -p /run/sshd
 chmod 755 /run/sshd
-sed -i '/^exec/i /usr/sbin/sshd' /usr/bin/entrypoint.sh
