@@ -34,6 +34,7 @@ apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2
 # install sshd
 apt-get install -y openssh-server
 sed -i 's/^#*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sed -i '/^PubkeyAuthentication yes/a TrustedUserCAKeys /etc/ssh/ca.pub' /etc/ssh/sshd_config
 sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
 
