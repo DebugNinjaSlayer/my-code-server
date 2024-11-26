@@ -38,8 +38,8 @@ sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_
 sed -i 's/^#*PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
 
 cat <<EOF >> /etc/ssh/sshd_config
-Match user johndoe
-  AuthorizedPrincipalsCommand /bin/echo 'jdoe'
+Match user coder
+  AuthorizedPrincipalsCommand /bin/echo 'skycc71640'
   AuthorizedPrincipalsCommandUser nobody
 EOF
 
