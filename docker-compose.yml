@@ -4,16 +4,17 @@ services:
     container_name: code-server
     hostname: code-server
     volumes:
-      - $PWD/coderhome:/home/coder
-      - $PWD/project:/home/coder/project
-      - $HOME/.ssh:/home/coder/.ssh:ro
+      - /home/skycc71640/container/my-code-server/coderhome:/home/coder
+      - /home/skycc71640/container/my-code-server/project:/home/coder/project
+      - /home/skycc71640/container/my-code-server/.ssh:/home/coder/.ssh:ro
       - docker-certs-client:/certs/client
     user: 1002:1002 # export UID=$(id -u) && export GID=$(id -g) && docker-compose up
     ports:
       - "8080:8080"
       - "12222:22"
     restart: unless-stopped
-    network_mode: cftunnel
+    networks:
+      - dokploy-network
   docker:
     image: docker:dind
     container_name: docker
@@ -26,8 +27,12 @@ services:
       - docker-data:/var/lib/docker
     privileged: true
     restart: unless-stopped
-    network_mode: cftunnel
+    networks:
+      - dokploy-network
 volumes:
   docker-certs-ca:
   docker-certs-client:
   docker-data:
+networks:
+  dokploy-network:
+    external: true
